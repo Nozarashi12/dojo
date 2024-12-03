@@ -1,0 +1,36 @@
+class ListNode:
+    def __init__(self, val=0, next=None): 
+        self.val = val
+        self.next = next
+
+def remove_occurrences(head, x):
+    dummy = ListNode(0)
+    dummy.next = head
+    current = dummy
+
+    while current.next is not None:
+        if current.next.val == x:
+            current.next = current.next.next
+        else:
+            current = current.next
+    return dummy.next
+
+def print_list(head):
+    while head is not None:
+        print(head.val, end=' ')
+        head = head.next
+    print()
+
+n, x = map(int, input().split())
+values = list(map(int, input().split()))
+
+if values:
+    head = ListNode(values[0])
+    current = head
+    for val in values[1:]:
+        current.next = ListNode(val)
+        current = current.next
+    head = remove_occurrences(head, x)
+    print_list(head)
+else:
+    print("No values provided.")
