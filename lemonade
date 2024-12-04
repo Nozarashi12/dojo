@@ -1,0 +1,33 @@
+n=int(input())
+a=list(map(int,input().split()))
+
+five=0
+ten=0
+
+valid=True
+for b in a:
+    if b==5:
+        five+=1
+    elif b==10:
+        if five>0:
+            five-=1
+            ten+=1
+        else:
+            valid=False
+            break
+    elif b==20:
+        if ten>0 and five>0:
+            ten-=1
+            five-=1
+        elif five>3:
+            five-=3
+        else:
+            valid=False
+            break
+if valid:
+    print("true")
+else:
+    print("false")
+    
+            
+    
