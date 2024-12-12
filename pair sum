@@ -1,0 +1,44 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+def find_pair(head,x):
+    if not head:
+        print(-1)
+        return
+    
+    ele=[]
+    current=head
+  
+    while current:
+        ele.append(current.data)
+        current=current.next
+    ele.sort()
+    left=0
+    right=len(ele)-1
+    while left<right:
+        curr_sum=ele[left]+ele[right]
+        if curr_sum==x:
+            print(ele[left],ele[right])
+            return
+        elif curr_sum<x:
+            left+=1
+        else:
+            right-=1
+    print(-1)
+    
+def linked_list(values):
+    if not values:
+        return None
+    head=Node(values[0])
+    current=head
+    for v in values[1:]:
+        current.next=Node(v)
+        current=current.next
+    return head
+n,x=map(int,input().split())
+values=list(map(int,input().split()))
+head=linked_list(values)
+find_pair(head,x)
+                
+    
