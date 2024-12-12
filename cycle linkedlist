@@ -1,0 +1,44 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        
+def linked(values,cycle_pos):
+    if not values:
+        return None
+    head=Node(values[0])
+    current=head
+    nodes=[head]
+    for v in values[1:]:
+        current.next=Node(v)
+        current=current.next
+        nodes.append(current)
+    if cycle_pos!=-1:
+        current.next=nodes[cycle_pos]
+        
+    return head
+    
+def cycle(head):
+    slow=head
+    fast=head
+    while fast is not None and fast.next is not None:
+        slow=slow.next
+        fast=fast.next.next
+        if slow==fast:
+            return True
+    return False
+    
+n=int(input())
+a=list(map(int,input().split()))
+pos=int(input())
+
+head=linked(a,pos)
+
+if cycle(head):
+    print("True")
+else:
+    print("False")
+    
+    
+    
+    
