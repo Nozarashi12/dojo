@@ -1,0 +1,39 @@
+class listNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def remove(head, x):
+    dummy = listNode(0)
+    dummy.next = head
+    current = dummy
+    
+    while current.next:
+        if current.next.val == x:
+            current.next = current.next.next  # Remove the node
+            break  # Remove only the first occurrence
+        else:
+            current = current.next
+    
+    return dummy.next  # Return updated list
+
+def display(head):
+    while head:
+        print(head.val, end=" ")
+        head = head.next
+    print()
+
+# Input and list creation
+n, x = map(int, input().split())  # n = number of nodes, x = value to remove
+value = list(map(int, input().split()))  # List of node values
+
+# Creating the linked list
+head = listNode(value[0])
+current = head
+for v in value[1:]:
+    current.next = listNode(v)
+    current = current.next
+
+# Removing the first occurrence of x and displaying the list
+head = remove(head, x)
+display(head)
