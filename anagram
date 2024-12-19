@@ -1,0 +1,11 @@
+s=input()
+k=input()
+
+
+if sorted(s)==sorted(k):
+    print("true")
+else:
+    print("false")
+
+
+    
