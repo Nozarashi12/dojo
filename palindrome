@@ -1,0 +1,10 @@
+s=input()
+n=len(s)
+orginal_s=s
+for _ in range(n):
+    if s==s[::-1]:
+        print("yes, its a palindrome")
+        break
+    s=s[-1]+s[:-1]
+else:
+    print("not a palindrome")
